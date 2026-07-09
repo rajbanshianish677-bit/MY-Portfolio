@@ -1,0 +1,31 @@
+# Anish Rajbanshi Portfolio
+
+Canonical URL: https://anishrajbanshi.com.np/
+Last updated: 2026-07-09
+
+Anish Rajbanshi is a BSc (Hons) Computing student at Lincoln International College in Nepal. His portfolio focuses on cybersecurity, networking, Linux, artificial intelligence, web development, and hands-on software projects.
+
+## Key Sections
+
+- About: background, academic focus, current availability, and learning philosophy.
+- Education: BSc (Hons) Computing at Lincoln International College, Nepal.
+- Skills: cybersecurity, networking, operating systems, programming, and web development.
+- Projects: Cisco Packet Tracer network, Linux architecture study, OS scheduling, Wireshark traffic analysis, Python university management system, and Tic-Tac-Toe with minimax AI.
+- Contact: email, LinkedIn, GitHub, Instagram, and Kathmandu, Nepal location.
+
+## Short Answers
+
+Who is Anish Rajbanshi?
+Anish Rajbanshi is a BSc (Hons) Computing student in Nepal focused on cybersecurity, networking, Linux, AI, and web development.
+
+What is Anish Rajbanshi learning?
+He is learning cybersecurity, networking, Linux administration, artificial intelligence, cloud computing, and web development.
+
+Is Anish Rajbanshi open to internships?
+Yes. He is open to internships, collaborations, and conversations about cybersecurity, networking, AI, and software development.
+
+## Contact
+
+- Email: rajbanshianish677@gmail.com
+- LinkedIn: https://www.linkedin.com/in/anish-rajbanshi-0b28783b6/
+- GitHub: https://github.com/rajbanshianish677-bit
