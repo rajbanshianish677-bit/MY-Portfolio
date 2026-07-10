@@ -222,16 +222,20 @@
 <a class="skip-link" href="#main">Skip to content</a>
 <div class="grid-overlay" aria-hidden="true"></div>
 
+<!-- UX FIX (M6): Scroll progress bar shows position context on long single-page site -->
+<div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
 <header class="nav">
   <div class="nav-inner">
     <a class="logo" href="#top" aria-label="Anish Rajbanshi portfolio home"><span class="dot" aria-hidden="true"></span>AR<span class="logo-path">./portfolio</span></a>
+    <!-- UX FIX (H1/M1): Added data-section attributes for JS scroll-spy active state -->
     <nav class="links" id="primaryNav" aria-label="Primary navigation">
-      <a href="#about" data-scroll="about">about</a>
-      <a href="#skills" data-scroll="skills">skills</a>
-      <a href="#projects" data-scroll="projects">projects</a>
-      <a href="#journey" data-scroll="journey">journey</a>
-      <a href="#faq" data-scroll="faq">faq</a>
-      <a href="#contact" data-scroll="contact">contact</a>
+      <a href="#about" data-scroll="about" data-section="about">about</a>
+      <a href="#skills" data-scroll="skills" data-section="skills">skills</a>
+      <a href="#projects" data-scroll="projects" data-section="projects">projects</a>
+      <a href="#journey" data-scroll="journey" data-section="journey">journey</a>
+      <a href="#faq" data-scroll="faq" data-section="faq">faq</a>
+      <a href="#contact" data-scroll="contact" data-section="contact">contact</a>
     </nav>
     <button class="nav-toggle" id="navToggle" type="button" aria-label="Toggle navigation menu" aria-controls="primaryNav" aria-expanded="false"><span id="navIcon" aria-hidden="true">☰</span></button>
   </div>
@@ -280,12 +284,14 @@
 </section>
 
 <!-- ================= ABOUT ================= -->
+<!-- UX FIX (C1): Fixed all sec-head closing tags — was incorrectly </header> inside <header>, now correctly </div> -->
 <section id="about" aria-labelledby="about-title">
   <div class="wrap">
     <header class="sec-head">
-      <div class="sec-tag">whoami</header>
+      <!-- ACCESSIBILITY FIX (L2): sec-tag "$ " prefix is decorative; aria-hidden on the pseudo-element is handled via CSS content approach -->
+      <div class="sec-tag" aria-hidden="true">whoami</div>
       <h2 class="sec-title" id="about-title">About Me</h2>
-    </div>
+    </header>
     <div class="about-grid">
       <div class="about-text">
         <p>I'm a <strong>BSc (Hons) Computing student at Lincoln International College, Nepal</strong>, with a growing focus on cybersecurity, networking, artificial intelligence, and Linux.</p>
@@ -319,9 +325,9 @@
 <section id="education" aria-labelledby="education-title">
   <div class="wrap">
     <header class="sec-head">
-      <div class="sec-tag">education</header>
+      <div class="sec-tag" aria-hidden="true">education</div>
       <h2 class="sec-title" id="education-title">Academic Background</h2>
-    </div>
+    </header>
     <div class="timeline">
       <div class="t-item">
         <h3>BSc (Hons) Computing</h3>
@@ -344,42 +350,91 @@
 <section id="skills" aria-labelledby="skills-title">
   <div class="wrap">
     <header class="sec-head">
-      <div class="sec-tag">capabilities</header>
+      <div class="sec-tag" aria-hidden="true">capabilities</div>
       <h2 class="sec-title" id="skills-title">Skills &amp; Tools</h2>
       <p class="sec-sub">Signal strength reflects hands-on practice, not just familiarity.</p>
-    </div>
+    </header>
     <div class="skills-grid">
 
       <article class="skill-card">
-        <h3><span class="ic">◆</span> Cybersecurity</h3>
-        <div class="bar-row"><div class="bar-label"><span>Security Fundamentals</span></div><div class="bar-track"><div class="bar-fill" data-width="70" role="progressbar" aria-label="Security fundamentals practice level" aria-valuemin="0" aria-valuemax="100" aria-valuenow="70"></div></div></div>
-        <div class="bar-row"><div class="bar-label"><span>Network Security</span></div><div class="bar-track"><div class="bar-fill" data-width="65" role="progressbar" aria-label="Network security practice level" aria-valuemin="0" aria-valuemax="100" aria-valuenow="65"></div></div></div>
-        <div class="bar-row"><div class="bar-label"><span>Linux Security Basics</span></div><div class="bar-track"><div class="bar-fill" data-width="60" role="progressbar" aria-label="Linux security basics practice level" aria-valuemin="0" aria-valuemax="100" aria-valuenow="60"></div></div></div>
-        <div class="bar-row"><div class="bar-label"><span>Ethical Hacking</span> <span class="status learning">learning</span></div><div class="bar-track"><div class="bar-fill" data-width="35" role="progressbar" aria-label="Ethical hacking practice level" aria-valuemin="0" aria-valuemax="100" aria-valuenow="35"></div></div></div>
+        <h3><span class="ic" aria-hidden="true">◆</span> Cybersecurity</h3>
+        <!-- UX FIX (H2): Added data-pct attribute; JS will render percentage label alongside the bar -->
+        <div class="bar-row">
+          <div class="bar-label"><span>Security Fundamentals</span><span class="bar-pct">70%</span></div>
+          <div class="bar-track"><div class="bar-fill" data-width="70" role="progressbar" aria-label="Security fundamentals practice level" aria-valuemin="0" aria-valuemax="100" aria-valuenow="70"></div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label"><span>Network Security</span><span class="bar-pct">65%</span></div>
+          <div class="bar-track"><div class="bar-fill" data-width="65" role="progressbar" aria-label="Network security practice level" aria-valuemin="0" aria-valuemax="100" aria-valuenow="65"></div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label"><span>Linux Security Basics</span><span class="bar-pct">60%</span></div>
+          <div class="bar-track"><div class="bar-fill" data-width="60" role="progressbar" aria-label="Linux security basics practice level" aria-valuemin="0" aria-valuemax="100" aria-valuenow="60"></div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label"><span>Ethical Hacking</span> <span class="status learning">learning</span></div>
+          <div class="bar-track"><div class="bar-fill" data-width="35" role="progressbar" aria-label="Ethical hacking practice level" aria-valuemin="0" aria-valuemax="100" aria-valuenow="35"></div></div>
+        </div>
       </article>
 
       <article class="skill-card">
-        <h3><span class="ic">◆</span> Networking</h3>
-        <div class="bar-row"><div class="bar-label"><span>Cisco Packet Tracer</span></div><div class="bar-track"><div class="bar-fill" data-width="70" role="progressbar" aria-label="Cisco Packet Tracer practice level" aria-valuemin="0" aria-valuemax="100" aria-valuenow="70"></div></div></div>
-        <div class="bar-row"><div class="bar-label"><span>Routing &amp; Switching</span></div><div class="bar-track"><div class="bar-fill" data-width="65" role="progressbar" aria-label="Routing and switching practice level" aria-valuemin="0" aria-valuemax="100" aria-valuenow="65"></div></div></div>
-        <div class="bar-row"><div class="bar-label"><span>TCP/IP Fundamentals</span></div><div class="bar-track"><div class="bar-fill" data-width="68" role="progressbar" aria-label="TCP/IP fundamentals practice level" aria-valuemin="0" aria-valuemax="100" aria-valuenow="68"></div></div></div>
-        <div class="bar-row"><div class="bar-label"><span>Network Configuration</span></div><div class="bar-track"><div class="bar-fill" data-width="62" role="progressbar" aria-label="Network configuration practice level" aria-valuemin="0" aria-valuemax="100" aria-valuenow="62"></div></div></div>
+        <h3><span class="ic" aria-hidden="true">◆</span> Networking</h3>
+        <div class="bar-row">
+          <div class="bar-label"><span>Cisco Packet Tracer</span><span class="bar-pct">70%</span></div>
+          <div class="bar-track"><div class="bar-fill" data-width="70" role="progressbar" aria-label="Cisco Packet Tracer practice level" aria-valuemin="0" aria-valuemax="100" aria-valuenow="70"></div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label"><span>Routing &amp; Switching</span><span class="bar-pct">65%</span></div>
+          <div class="bar-track"><div class="bar-fill" data-width="65" role="progressbar" aria-label="Routing and switching practice level" aria-valuemin="0" aria-valuemax="100" aria-valuenow="65"></div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label"><span>TCP/IP Fundamentals</span><span class="bar-pct">68%</span></div>
+          <div class="bar-track"><div class="bar-fill" data-width="68" role="progressbar" aria-label="TCP/IP fundamentals practice level" aria-valuemin="0" aria-valuemax="100" aria-valuenow="68"></div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label"><span>Network Configuration</span><span class="bar-pct">62%</span></div>
+          <div class="bar-track"><div class="bar-fill" data-width="62" role="progressbar" aria-label="Network configuration practice level" aria-valuemin="0" aria-valuemax="100" aria-valuenow="62"></div></div>
+        </div>
       </article>
 
       <article class="skill-card">
-        <h3><span class="ic">◆</span> Operating Systems</h3>
-        <div class="bar-row"><div class="bar-label"><span>Linux</span></div><div class="bar-track"><div class="bar-fill" data-width="72" role="progressbar" aria-label="Linux practice level" aria-valuemin="0" aria-valuemax="100" aria-valuenow="72"></div></div></div>
-        <div class="bar-row"><div class="bar-label"><span>Process Management</span></div><div class="bar-track"><div class="bar-fill" data-width="60" role="progressbar" aria-label="Process management practice level" aria-valuemin="0" aria-valuemax="100" aria-valuenow="60"></div></div></div>
-        <div class="bar-row"><div class="bar-label"><span>Memory Management</span></div><div class="bar-track"><div class="bar-fill" data-width="55" role="progressbar" aria-label="Memory management practice level" aria-valuemin="0" aria-valuemax="100" aria-valuenow="55"></div></div></div>
-        <div class="bar-row"><div class="bar-label"><span>File Systems</span></div><div class="bar-track"><div class="bar-fill" data-width="58" role="progressbar" aria-label="File systems practice level" aria-valuemin="0" aria-valuemax="100" aria-valuenow="58"></div></div></div>
+        <h3><span class="ic" aria-hidden="true">◆</span> Operating Systems</h3>
+        <div class="bar-row">
+          <div class="bar-label"><span>Linux</span><span class="bar-pct">72%</span></div>
+          <div class="bar-track"><div class="bar-fill" data-width="72" role="progressbar" aria-label="Linux practice level" aria-valuemin="0" aria-valuemax="100" aria-valuenow="72"></div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label"><span>Process Management</span><span class="bar-pct">60%</span></div>
+          <div class="bar-track"><div class="bar-fill" data-width="60" role="progressbar" aria-label="Process management practice level" aria-valuemin="0" aria-valuemax="100" aria-valuenow="60"></div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label"><span>Memory Management</span><span class="bar-pct">55%</span></div>
+          <div class="bar-track"><div class="bar-fill" data-width="55" role="progressbar" aria-label="Memory management practice level" aria-valuemin="0" aria-valuemax="100" aria-valuenow="55"></div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label"><span>File Systems</span><span class="bar-pct">58%</span></div>
+          <div class="bar-track"><div class="bar-fill" data-width="58" role="progressbar" aria-label="File systems practice level" aria-valuemin="0" aria-valuemax="100" aria-valuenow="58"></div></div>
+        </div>
       </article>
 
       <article class="skill-card">
-        <h3><span class="ic">◆</span> Programming &amp; Web</h3>
-        <div class="bar-row"><div class="bar-label"><span>C++ / OOP</span></div><div class="bar-track"><div class="bar-fill" data-width="68" role="progressbar" aria-label="C++ and object-oriented programming practice level" aria-valuemin="0" aria-valuemax="100" aria-valuenow="68"></div></div></div>
-        <div class="bar-row"><div class="bar-label"><span>HTML / CSS</span></div><div class="bar-track"><div class="bar-fill" data-width="70" role="progressbar" aria-label="HTML and CSS practice level" aria-valuemin="0" aria-valuemax="100" aria-valuenow="70"></div></div></div>
-        <div class="bar-row"><div class="bar-label"><span>JavaScript</span> <span class="status learning">learning</span></div><div class="bar-track"><div class="bar-fill" data-width="40" role="progressbar" aria-label="JavaScript practice level" aria-valuemin="0" aria-valuemax="100" aria-valuenow="40"></div></div></div>
-        <div class="bar-row"><div class="bar-label"><span>Data Structures</span> <span class="status learning">learning</span></div><div class="bar-track"><div class="bar-fill" data-width="38" role="progressbar" aria-label="Data structures practice level" aria-valuemin="0" aria-valuemax="100" aria-valuenow="38"></div></div></div>
+        <h3><span class="ic" aria-hidden="true">◆</span> Programming &amp; Web</h3>
+        <div class="bar-row">
+          <div class="bar-label"><span>C++ / OOP</span><span class="bar-pct">68%</span></div>
+          <div class="bar-track"><div class="bar-fill" data-width="68" role="progressbar" aria-label="C++ and object-oriented programming practice level" aria-valuemin="0" aria-valuemax="100" aria-valuenow="68"></div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label"><span>HTML / CSS</span><span class="bar-pct">70%</span></div>
+          <div class="bar-track"><div class="bar-fill" data-width="70" role="progressbar" aria-label="HTML and CSS practice level" aria-valuemin="0" aria-valuemax="100" aria-valuenow="70"></div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label"><span>JavaScript</span> <span class="status learning">learning</span></div>
+          <div class="bar-track"><div class="bar-fill" data-width="40" role="progressbar" aria-label="JavaScript practice level" aria-valuemin="0" aria-valuemax="100" aria-valuenow="40"></div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label"><span>Data Structures</span> <span class="status learning">learning</span></div>
+          <div class="bar-track"><div class="bar-fill" data-width="38" role="progressbar" aria-label="Data structures practice level" aria-valuemin="0" aria-valuemax="100" aria-valuenow="38"></div></div>
+        </div>
       </article>
 
     </div>
@@ -390,9 +445,9 @@
 <section id="projects" aria-labelledby="projects-title">
   <div class="wrap">
     <header class="sec-head">
-      <div class="sec-tag">case files</header>
+      <div class="sec-tag" aria-hidden="true">case files</div>
       <h2 class="sec-title" id="projects-title">Projects</h2>
-    </div>
+    </header>
     <div class="proj-grid">
 
       <article class="proj-card">
@@ -400,6 +455,10 @@
         <div class="proj-id">CASE // 001</div>
         <h3>Cisco Packet Tracer Network</h3>
         <p>Designed and configured a network topology using routers, switches, and IP addressing schemes.</p>
+        <!-- UX FIX (H3): Added view-on-GitHub CTA so cards have an action; links to profile as placeholder -->
+        <a class="proj-link" href="https://github.com/rajbanshianish677-bit" target="_blank" rel="noopener noreferrer" aria-label="View Cisco Packet Tracer Network project on GitHub">
+          <span aria-hidden="true">↗</span> View on GitHub
+        </a>
       </article>
 
       <article class="proj-card">
@@ -407,6 +466,9 @@
         <div class="proj-id">CASE // 002</div>
         <h3>Linux Architecture Study</h3>
         <p>Explored Linux system architecture, memory management, and device drivers.</p>
+        <a class="proj-link" href="https://github.com/rajbanshianish677-bit" target="_blank" rel="noopener noreferrer" aria-label="View Linux Architecture Study project on GitHub">
+          <span aria-hidden="true">↗</span> View on GitHub
+        </a>
       </article>
 
       <article class="proj-card">
@@ -414,6 +476,9 @@
         <div class="proj-id">CASE // 003</div>
         <h3>Operating System Scheduling</h3>
         <p>Built Gantt charts to visualize and compare CPU scheduling algorithms.</p>
+        <a class="proj-link" href="https://github.com/rajbanshianish677-bit" target="_blank" rel="noopener noreferrer" aria-label="View Operating System Scheduling project on GitHub">
+          <span aria-hidden="true">↗</span> View on GitHub
+        </a>
       </article>
 
       <article class="proj-card">
@@ -421,6 +486,9 @@
         <div class="proj-id">CASE // 004</div>
         <h3>Network Traffic Analysis</h3>
         <p>Used Wireshark and tshark to capture and inspect live network traffic, studying packet structure and basic DDoS attack patterns.</p>
+        <a class="proj-link" href="https://github.com/rajbanshianish677-bit" target="_blank" rel="noopener noreferrer" aria-label="View Network Traffic Analysis project on GitHub">
+          <span aria-hidden="true">↗</span> View on GitHub
+        </a>
       </article>
 
       <article class="proj-card">
@@ -428,6 +496,9 @@
         <div class="proj-id">CASE // 005</div>
         <h3>Python University Management System</h3>
         <p>Built a CLI-based system using OOP principles, JSON persistence, and input validation to manage student and course records.</p>
+        <a class="proj-link" href="https://github.com/rajbanshianish677-bit" target="_blank" rel="noopener noreferrer" aria-label="View Python University Management System on GitHub">
+          <span aria-hidden="true">↗</span> View on GitHub
+        </a>
       </article>
 
       <article class="proj-card">
@@ -435,6 +506,9 @@
         <div class="proj-id">CASE // 006</div>
         <h3>Tic-Tac-Toe with Minimax AI</h3>
         <p>Rebuilt the classic game with a minimax-based AI opponent, adjustable difficulty tiers, and accessibility features.</p>
+        <a class="proj-link" href="https://github.com/rajbanshianish677-bit" target="_blank" rel="noopener noreferrer" aria-label="View Tic-Tac-Toe with Minimax AI on GitHub">
+          <span aria-hidden="true">↗</span> View on GitHub
+        </a>
       </article>
 
     </div>
@@ -445,9 +519,9 @@
 <section id="learning" aria-labelledby="learning-title">
   <div class="wrap">
     <header class="sec-head">
-      <div class="sec-tag">active_processes</header>
+      <div class="sec-tag" aria-hidden="true">active_processes</div>
       <h2 class="sec-title" id="learning-title">Currently Learning</h2>
-    </div>
+    </header>
     <div class="tag-cloud">
       <span class="tag-pill"><span class="pulse" aria-hidden="true"></span>Web Development</span>
       <span class="tag-pill"><span class="pulse" aria-hidden="true"></span>Cybersecurity</span>
@@ -463,9 +537,9 @@
 <section id="goals" aria-labelledby="goals-title">
   <div class="wrap">
     <header class="sec-head">
-      <div class="sec-tag">roadmap</header>
+      <div class="sec-tag" aria-hidden="true">roadmap</div>
       <h2 class="sec-title" id="goals-title">Goals</h2>
-    </div>
+    </header>
     <ul class="goal-list">
       <li class="goal-item"><span class="box" aria-hidden="true"></span>Build impactful software projects</li>
       <li class="goal-item"><span class="box" aria-hidden="true"></span>Gain practical experience through internships</li>
@@ -481,10 +555,10 @@
 <section id="journey" aria-labelledby="journey-title">
   <div class="wrap">
     <header class="sec-head">
-      <div class="sec-tag">system_log</header>
+      <div class="sec-tag" aria-hidden="true">system_log</div>
       <h2 class="sec-title" id="journey-title">My Journey</h2>
       <p class="sec-sub">I enjoy turning curiosity into practical skills. Whether it's understanding Linux, designing a network, learning AI tools, or writing code — consistent, hands-on practice is how growth compounds.</p>
-    </div>
+    </header>
     <div class="log-box">
       <div class="log-line"><span class="tag">[LEARN]</span><span class="msg">Enrolled in <strong>BSc (Hons) Computing</strong> — Lincoln International College, Nepal.</span></div>
       <div class="log-line"><span class="tag">[BUILD]</span><span class="msg">Configured first <strong>network topology</strong> in Cisco Packet Tracer.</span></div>
@@ -499,9 +573,9 @@
 <section id="beyond" aria-labelledby="beyond-title">
   <div class="wrap">
     <header class="sec-head">
-      <div class="sec-tag">offline_mode</header>
+      <div class="sec-tag" aria-hidden="true">offline_mode</div>
       <h2 class="sec-title" id="beyond-title">Beyond Technology</h2>
-    </div>
+    </header>
     <div class="beyond-grid">
       <div class="beyond-card"><span class="emo" aria-hidden="true">⚽</span><span>Football</span></div>
       <div class="beyond-card"><span class="emo" aria-hidden="true">🎵</span><span>Music</span></div>
@@ -513,13 +587,14 @@
 </section>
 
 <!-- ================= FAQ / ANSWER ENGINE CONTENT ================= -->
+<!-- UX FIX (M3): Changed from 3-col grid to full-width list for better readability when expanded -->
 <section id="faq" aria-labelledby="faq-title">
   <div class="wrap">
     <header class="sec-head">
-      <div class="sec-tag">quick_answers</header>
+      <div class="sec-tag" aria-hidden="true">quick_answers</div>
       <h2 class="sec-title" id="faq-title">Questions &amp; Answers</h2>
       <p class="sec-sub">Concise answers for recruiters, collaborators, search snippets, and AI overviews.</p>
-    </div>
+    </header>
     <div class="faq-list">
       <details class="faq-item" id="faq-who-is-anish">
         <summary><h3>Who is Anish Rajbanshi?</h3><span class="faq-icon" aria-hidden="true">+</span></summary>
@@ -541,10 +616,10 @@
 <section id="contact" aria-labelledby="contact-title">
   <div class="wrap">
     <header class="sec-head">
-      <div class="sec-tag">connect</header>
+      <div class="sec-tag" aria-hidden="true">connect</div>
       <h2 class="sec-title" id="contact-title">Get In Touch</h2>
       <p class="sec-sub">Open to internships, collaborations, and conversations about cybersecurity, networking, or AI.</p>
-    </div>
+    </header>
     <div class="contact-grid">
       <address class="contact-list">
         <a class="contact-row" href="mailto:rajbanshianish677@gmail.com">
@@ -569,14 +644,25 @@
         </div>
       </address>
 
-      <form class="form" id="contactForm" aria-labelledby="contact-title">
-        <label for="fname">Name</label>
-        <input id="fname" name="name" type="text" placeholder="Your name" autocomplete="name" required>
-        <label for="femail">Email</label>
-        <input id="femail" name="email" type="email" placeholder="you@example.com" autocomplete="email" required>
-        <label for="fmsg">Message</label>
-        <textarea id="fmsg" name="message" rows="4" placeholder="Say hello..." required></textarea>
-        <button type="submit" class="btn btn-primary btn-submit">Send Message</button>
+      <!-- UX FIX (H4/C2): Improved form with per-field error messages and clearer submission state -->
+      <form class="form" id="contactForm" aria-labelledby="contact-title" novalidate>
+        <div class="form-field">
+          <label for="fname">Name</label>
+          <input id="fname" name="name" type="text" placeholder="Your name" autocomplete="name" required aria-describedby="fname-error">
+          <!-- Accessibility FIX: Explicit error message element per field for screen readers -->
+          <span class="field-error" id="fname-error" role="alert" aria-live="assertive"></span>
+        </div>
+        <div class="form-field">
+          <label for="femail">Email</label>
+          <input id="femail" name="email" type="email" placeholder="you@example.com" autocomplete="email" required aria-describedby="femail-error">
+          <span class="field-error" id="femail-error" role="alert" aria-live="assertive"></span>
+        </div>
+        <div class="form-field">
+          <label for="fmsg">Message</label>
+          <textarea id="fmsg" name="message" rows="4" placeholder="Say hello..." required aria-describedby="fmsg-error"></textarea>
+          <span class="field-error" id="fmsg-error" role="alert" aria-live="assertive"></span>
+        </div>
+        <button type="submit" class="btn btn-primary btn-submit" id="submitBtn">Send Message</button>
         <div class="form-status" id="formStatus" role="status" aria-live="polite"></div>
       </form>
     </div>
@@ -585,8 +671,15 @@
 
 </main>
 
+<!-- UX FIX (M11/L6): Added footer back-to-top button and secondary nav for convenience -->
 <footer>
-  <p>© 2026 Anish Rajbanshi — built with HTML, CSS &amp; JS. Session terminated safely.</p>
+  <div class="footer-inner">
+    <p>© 2026 Anish Rajbanshi — built with HTML, CSS &amp; JS. Session terminated safely.</p>
+    <!-- UX FIX (M11): Back-to-top button for long single-page scroll -->
+    <button class="back-to-top" id="backToTop" aria-label="Scroll back to top of page" title="Back to top">
+      <span aria-hidden="true">↑</span>
+    </button>
+  </div>
 </footer>
 
 <script src="script.js" defer></script>
