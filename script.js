@@ -282,15 +282,36 @@ if (form && statusEl && submitBtn) {
     statusEl.textContent  = '> initializing connection...';
     statusEl.classList.remove('is-error');
 
-    // [FIX C2] Clear message explains the form has no backend yet
-    setTimeout(() => {
-      statusEl.textContent =
-        '> message queued — connect a backend or mail service to deliver it.';
+    // [FIX] Actually submit to formspree via fetch
+    fetch(form.action, {
+      method: form.method,
+      body: new FormData(form),
+      headers: {
+        'Accept': 'application/json'
+      }
+    }).then(response => {
+      if (response.ok) {
+        statusEl.textContent = '> message delivered successfully. I will get back to you soon.';
+        form.reset();
+        Object.keys(fieldRules).forEach(clearFieldError);
+      } else {
+        response.json().then(data => {
+          if (Object.hasOwn(data, 'errors')) {
+            statusEl.textContent = data["errors"].map(error => error["message"]).join(", ");
+          } else {
+            statusEl.textContent = '> error: could not send message. Please try again later.';
+          }
+        }).catch(err => {
+            statusEl.textContent = '> error: could not send message. Please try again later.';
+        });
+        statusEl.classList.add('is-error');
+      }
+    }).catch(error => {
+      statusEl.textContent = '> network error: could not send message.';
+      statusEl.classList.add('is-error');
+    }).finally(() => {
       submitBtn.disabled   = false;
       submitBtn.textContent = 'Send Message';
-      form.reset();
-      // Clear any residual error messages after reset
-      Object.keys(fieldRules).forEach(clearFieldError);
-    }, 1200);
+    });
   });
 }
