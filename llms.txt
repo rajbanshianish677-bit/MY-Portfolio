@@ -1,22 +1,29 @@
 # Anish Rajbanshi Portfolio
 
-Canonical URL: https://anishrajbanshi.com.np/
-Last updated: 2026-07-09
+This file provides structured information about Anish Rajbanshi for AI assistants and search crawlers.
 
-Anish Rajbanshi is a BSc (Hons) Computing student at Lincoln International College in Nepal. His portfolio focuses on cybersecurity, networking, Linux, artificial intelligence, web development, and hands-on software projects.
+Canonical URL: https://anishrajbanshi.com.np/
+Last updated: 2026-07-10
+
+Anish Rajbanshi is a Cybersecurity and Networking Student at Lincoln International College in Nepal. His portfolio focuses on cybersecurity, networking, Linux, artificial intelligence, web development, and hands-on software projects.
 
 ## Key Sections
 
 - About: background, academic focus, current availability, and learning philosophy.
 - Education: BSc (Hons) Computing at Lincoln International College, Nepal.
-- Skills: cybersecurity, networking, operating systems, programming, and web development.
-- Projects: Cisco Packet Tracer network, Linux architecture study, OS scheduling, Wireshark traffic analysis, Python university management system, and Tic-Tac-Toe with minimax AI.
-- Contact: email, LinkedIn, GitHub, Instagram, and Kathmandu, Nepal location.
+- Skills: cybersecurity, networking, operating systems, programming (C++, Python, HTML/CSS, JavaScript), and web development.
+- Projects:
+  - Cisco Packet Tracer network <!-- Needs repo link -->
+  - Linux architecture study <!-- Needs repo link -->
+  - OS scheduling <!-- Needs repo link -->
+  - Wireshark traffic analysis <!-- Needs repo link -->
+  - Python university management system <!-- Needs repo link -->
+  - [Tic-Tac-Toe with minimax AI](https://github.com/rajbanshianish677-bit/tic-tac-game)
 
 ## Short Answers
 
 Who is Anish Rajbanshi?
-Anish Rajbanshi is a BSc (Hons) Computing student in Nepal focused on cybersecurity, networking, Linux, AI, and web development.
+Anish Rajbanshi is a Cybersecurity and Networking Student in Nepal focused on cybersecurity, networking, Linux, AI, and web development.
 
 What is Anish Rajbanshi learning?
 He is learning cybersecurity, networking, Linux administration, artificial intelligence, cloud computing, and web development.
@@ -24,8 +31,19 @@ He is learning cybersecurity, networking, Linux administration, artificial intel
 Is Anish Rajbanshi open to internships?
 Yes. He is open to internships, collaborations, and conversations about cybersecurity, networking, AI, and software development.
 
+What programming languages does Anish Rajbanshi know?
+Anish knows C++, Python, HTML/CSS, and JavaScript based on his portfolio projects and skills.
+
+Where is Anish Rajbanshi based?
+He is based in Kathmandu, Nepal.
+
+What college does Anish Rajbanshi attend?
+He attends Lincoln International College in Nepal.
+
 ## Contact
 
 - Email: rajbanshianish677@gmail.com
 - LinkedIn: https://www.linkedin.com/in/anish-rajbanshi-0b28783b6/
 - GitHub: https://github.com/rajbanshianish677-bit
+- Instagram: https://www.instagram.com/anish_rajbanshi7/
+- Location: Kathmandu, Nepal
