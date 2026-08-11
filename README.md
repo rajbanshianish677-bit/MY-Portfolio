@@ -1,17 +1,17 @@
 # Anish Rajbanshi — Portfolio
 
-A personal portfolio website with a cybersecurity/terminal-inspired aesthetic, built with vanilla HTML, CSS, and JavaScript. No frameworks, no build step — just open it in a browser.
+A personal portfolio website with a hacker-terminal aesthetic, built with vanilla HTML, CSS, and JavaScript. No frameworks, no build step — just open it in a browser.
 
 **Live Site:** [anishrajbanshi.com.np](https://anishrajbanshi.com.np)
 
-**Live look:** dark terminal theme, monospace/sans type pairing (JetBrains Mono + Inter), animated typing effect, scroll-triggered skill bars, and a circuit-grid background.
+**Live look:** green-phosphor CRT terminal theme (JetBrains Mono throughout), an animated **Matrix rain** canvas background, scanline + vignette overlays, a boot-up typing terminal, scroll-triggered skill bars, and command-prompt styling on every section (`root@anish:~$ ./whoami`).
 
 ## Sections
 
 - **Hero** — animated terminal card that "boots up" with a typing effect revealing name, role, and status
-- **About Me** — bio + a terminal-style `whoami` info block
+- **About Me** — bio + a terminal-style `whoami` info block (`$ cat /etc/profile`)
 - **Academic Background** — education timeline (BSc (Hons) Computing, Lincoln International College, Nepal)
-- **Skills & Tools** — categorized skill bars for Cybersecurity, Networking, Operating Systems, and Programming & Web
+- **Skills & Tools** — categorized skill bars for Cybersecurity, Networking, Operating Systems, and Programming & Web, framed as `#!/bin/skills` scripts
 - **Projects** — case-file style cards, including:
   - Cisco Packet Tracer Network
   - Linux Architecture Study
@@ -19,28 +19,31 @@ A personal portfolio website with a cybersecurity/terminal-inspired aesthetic, b
   - Network Traffic Analysis
   - Python University Management System
   - Tic-Tac-Toe with Minimax AI
-- **Currently Learning** — active focus areas
+- **Currently Learning** — active focus areas with pulsing status indicators
 - **Goals** — roadmap-style checklist of long-term goals
-- **My Journey** — system-log-style timeline of milestones
+- **My Journey** — system-log-style timeline (`$ tail -f /var/log/journey.log`)
 - **Beyond Technology** — personal interests outside tech
-- **Get In Touch** — contact links (email, LinkedIn, GitHub, Instagram) and a message form
+- **Get In Touch** — contact links (email, LinkedIn, GitHub, Instagram) and a working message form
 
 ## Tech Stack
 
 - **HTML5** — semantic structure
-- **CSS3** — custom properties (CSS variables) for theming, CSS grid/flexbox layouts, animations
-- **Vanilla JavaScript** — typing effect, `IntersectionObserver` for scroll-triggered skill bar animation, mobile nav toggle, smooth scroll, form handling
+- **CSS3** — custom properties (CSS variables) for theming, CSS grid/flexbox layouts, CRT scanline/vignette overlays, glow animations
+- **Vanilla JavaScript** — Matrix rain canvas renderer, typing effect, `IntersectionObserver` for scroll-triggered skill bar animation and scroll-spy nav, mobile nav toggle, smooth scroll, form handling
 
 No external JS libraries or frameworks are used. Fonts are loaded from Google Fonts.
 
 ## Features
 
+- **Matrix rain background** — canvas-based falling-character rain in phosphor green; pauses when the tab is hidden and is disabled entirely for users who prefer reduced motion
+- **CRT terminal aesthetic** — scanline overlay, vignette, text glow, and terminal-chrome window with traffic-light dots
 - Fully responsive layout with a mobile nav toggle
 - Respects `prefers-reduced-motion` for accessibility
 - Animated hero terminal with typewriter effect
 - Skill proficiency bars that animate into view on scroll
+- Scroll-spy navigation with active-section highlighting and a scroll progress bar
 - Smooth in-page scrolling via `data-scroll` attributes
-- Contact form with client-side status feedback (not yet wired to a backend/mail service)
+- Contact form with per-field validation and submission feedback, wired to Formspree
 - **SEO & AEO Optimized** — Includes rich structured data (JSON-LD), Open Graph metadata, semantic HTML, and an Answer Engine Optimization (AEO) FAQ section.
 - **AI-Ready** — Provides `llms.txt` and `robots.txt` for well-behaved crawlers and AI bots.
 
@@ -72,8 +75,8 @@ Works out of the box with any static hosting provider, e.g. GitHub Pages, Netlif
 
 ## To-Do / Future Improvements
 
-- Connect the contact form to a real backend or email service (e.g. Formspree, EmailJS)
 - Add project links/repos to each case file card
+- Add a light "day mode" theme toggle
 
 ## Contact
 
@@ -83,4 +86,4 @@ Works out of the box with any static hosting provider, e.g. GitHub Pages, Netlif
 
 ---
 
-*Built with HTML, CSS & JS. Session terminated safely.*
+_Built with HTML, CSS & JS. Session terminated safely._

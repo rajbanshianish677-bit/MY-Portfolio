@@ -8,6 +8,92 @@
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 /* ================================================================
+   MATRIX RAIN BACKGROUND
+   Canvas-based falling character rain. Skipped entirely when the
+   user prefers reduced motion. Pauses when tab is hidden.
+   ================================================================ */
+(function initMatrixRain() {
+  const canvas = document.getElementById('matrixCanvas');
+  if (!canvas || prefersReducedMotion) return;
+
+  const ctx = canvas.getContext('2d');
+  if (!ctx) return;
+
+  const CHARS = 'アイウエオカキクケコサシスセソ0123456789ABCDEF<>/{}[]#$%';
+  const FONT_SIZE = 14;
+  const FADE_ALPHA = 0.08;   // trail fade per frame — lower = longer trails
+  const FRAME_INTERVAL = 50; // ms between drops (~20fps, easy on CPU)
+
+  let columns = [];
+  let rafId = null;
+  let lastFrame = 0;
+
+  function resize() {
+    canvas.width  = window.innerWidth;
+    canvas.height = window.innerHeight;
+    const count = Math.ceil(canvas.width / FONT_SIZE);
+    // Preserve existing drop positions where possible
+    columns = Array.from({ length: count }, (_, i) =>
+      columns[i] !== undefined ? columns[i] : Math.floor(Math.random() * -50)
+    );
+    ctx.fillStyle = '#020604';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+  }
+
+  function draw(timestamp) {
+    rafId = window.requestAnimationFrame(draw);
+    if (timestamp - lastFrame < FRAME_INTERVAL) return;
+    lastFrame = timestamp;
+
+    // Translucent fill creates the fading trail effect
+    ctx.fillStyle = `rgba(2, 6, 4, ${FADE_ALPHA})`;
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    ctx.font = `${FONT_SIZE}px 'JetBrains Mono', monospace`;
+
+    for (let i = 0; i < columns.length; i++) {
+      const char = CHARS[Math.floor(Math.random() * CHARS.length)];
+      const x = i * FONT_SIZE;
+      const y = columns[i] * FONT_SIZE;
+
+      // Bright head character, dimmer trail handled by fade fill
+      ctx.fillStyle = Math.random() < 0.05 ? '#b4ffc9' : '#33ff66';
+      ctx.fillText(char, x, y);
+
+      // Reset drop to top at random once it passes the bottom
+      if (y > canvas.height && Math.random() > 0.975) {
+        columns[i] = 0;
+      } else {
+        columns[i] += 1;
+      }
+    }
+  }
+
+  function start() {
+    if (rafId === null) {
+      lastFrame = 0;
+      rafId = window.requestAnimationFrame(draw);
+    }
+  }
+
+  function stop() {
+    if (rafId !== null) {
+      window.cancelAnimationFrame(rafId);
+      rafId = null;
+    }
+  }
+
+  // Pause animation when tab is hidden to save CPU/battery
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) stop(); else start();
+  });
+
+  window.addEventListener('resize', resize, { passive: true });
+  resize();
+  start();
+})();
+
+/* ================================================================
    HERO TERMINAL TYPEWRITER
    Hero terminal content lives in HTML for crawlers; JS only reveals it.
    ================================================================ */
